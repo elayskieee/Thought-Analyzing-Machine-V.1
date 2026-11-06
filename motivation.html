@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivation | Thought Analyzing Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="computer">
+        <h1>HERE'S A LITTLE NOTE FOR YOU :)</h1>
+        <p class="subtitle">Take a breath. You are doing better than you think.</p>
+
+        <section class="screen" aria-labelledby="message-title">
+            <p class="status">MESSAGE RECEIVED SUCCESSFULLY!</p>
+            <label class="language-label" for="languageSelect">Response language</label>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="tl" selected>Filipino (Tagalog)</option>
+            </select>
+            <div id="motivationMessage" lang="tl">
+                <h3 id="message-title">Magpatuloy ka lang</h3>
+                <p>Normal lang mag-isip nang marami. Hindi mo kailangang ayusin lahat agad. Isa-isahin mo lang.</p>
+                <p>Kahit konti lang ang nagawa mo, ayos lang, ang mahalaga ay may nagawa ka pa rin. 'Wag mas'yadong maging mahigpit sa sarili mo. Intindihin mo rin ang sarili mo, gaya ng pag-intindi mo sa mga mahal mo.</p>
+            </div>
+        </section>
+
+        <a href="index.html" class="motivation">Back to Machine</a>
+    </main>
+    <script>
+        const languageSelect = document.getElementById("languageSelect");
+        const motivationMessage = document.getElementById("motivationMessage");
+        const messages = {
+            en: {
+                title: "Keep moving forward",
+                paragraphs: [
+                    "Your thoughts are only one part of your story. You don't have to figure everything out right now, take it one step at a time.",
+                    "Progress can be quiet and still count. Give yourself the same patience and encouragement you would offer someone you care about."
+                ]
+            },
+            tl: {
+                title: "Magpatuloy ka lang",
+                paragraphs: [
+                    "Normal lang mag-isip nang marami. Hindi mo kailangang ayusin lahat agad. Isa-isahin mo lang.",
+                    "Kahit konti lang ang nagawa mo, ayos lang, ang mahalaga ay may nagawa ka pa rin. 'Wag mas'yadong maging mahigpit sa sarili mo. Intindihin mo rin ang sarili mo, gaya ng pag-intindi mo sa mga mahal mo."
+                ]
+            }
+        };
+
+        languageSelect.addEventListener("change", () => {
+            const language = languageSelect.value;
+            const message = messages[language];
+            motivationMessage.lang = language;
+            motivationMessage.querySelector("h3").textContent = message.title;
+            motivationMessage.querySelectorAll("p").forEach((paragraph, index) => {
+                paragraph.textContent = message.paragraphs[index];
+            });
+        });
+    </script>
+</body>
+</html>
